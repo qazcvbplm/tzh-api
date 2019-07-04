@@ -1,6 +1,6 @@
 package ops.school.api.dao;
 
-import com.dto.RunOrdersTj;
+import ops.school.api.dto.RunOrdersTj;
 import ops.school.api.entity.RunOrders;
 import ops.school.api.entity.Sender;
 import org.apache.ibatis.annotations.Param;
