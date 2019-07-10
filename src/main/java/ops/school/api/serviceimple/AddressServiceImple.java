@@ -1,5 +1,6 @@
 package ops.school.api.serviceimple;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import ops.school.api.dao.AddressMapper;
 import ops.school.api.entity.Address;
 import ops.school.api.service.AddressService;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class AddressServiceImple implements AddressService {
+public class AddressServiceImple extends ServiceImpl<AddressMapper, Address> implements AddressService {
 
     @Autowired
     private AddressMapper addressMapper;
