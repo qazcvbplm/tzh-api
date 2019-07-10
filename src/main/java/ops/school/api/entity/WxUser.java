@@ -1,7 +1,11 @@
 package ops.school.api.entity;
 
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+
 public class WxUser extends Base {
+    @TableId(type = IdType.INPUT)
     private String openId;
 
     private String nickName;

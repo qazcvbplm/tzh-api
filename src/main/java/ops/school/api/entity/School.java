@@ -1,5 +1,8 @@
 package ops.school.api.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -8,7 +11,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class School extends Base implements Serializable {
-
+    @TableId(type = IdType.AUTO)
     private Integer id;
     @NotBlank
     private String name;

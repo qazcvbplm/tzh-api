@@ -1,8 +1,12 @@
 package ops.school.api.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+
 import javax.validation.constraints.NotNull;
 
 public class SourceOrder extends Base {
+    @TableId(type = IdType.AUTO)
     private String id;
     @NotNull
     private Integer appId;

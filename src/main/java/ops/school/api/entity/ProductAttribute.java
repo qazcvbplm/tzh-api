@@ -1,8 +1,12 @@
 package ops.school.api.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+
 import java.math.BigDecimal;
 
 public class ProductAttribute extends Base {
+    @TableId(type = IdType.AUTO)
     private Integer id;
 
     private Integer productId;

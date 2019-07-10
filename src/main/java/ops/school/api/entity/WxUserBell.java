@@ -1,5 +1,7 @@
 package ops.school.api.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
@@ -7,6 +9,7 @@ import java.math.BigDecimal;
 
 @JsonInclude(Include.NON_NULL)
 public class WxUserBell {
+    @TableId(type = IdType.INPUT)
     private String phone;
 
     private Integer source;

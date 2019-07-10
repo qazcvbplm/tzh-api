@@ -1,9 +1,13 @@
 package ops.school.api.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 public class SecondHand extends Base {
+    @TableId(type = IdType.AUTO)
     private Integer id;
     @NotNull
     private String title;

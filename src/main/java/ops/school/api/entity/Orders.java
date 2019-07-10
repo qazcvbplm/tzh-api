@@ -1,5 +1,7 @@
 package ops.school.api.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import ops.school.api.util.BaiduUtil;
 import ops.school.api.util.Util;
 
@@ -10,6 +12,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public class Orders extends Base {
+    @TableId(type = IdType.INPUT)
     private String id;
 
     private Integer appId;

@@ -1,12 +1,15 @@
 package ops.school.api.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.List;
 
 public class Product extends Base {
-
+    @TableId(type = IdType.AUTO)
     private Integer id;
     @NotBlank
     private String productName;

@@ -1,5 +1,7 @@
 package ops.school.api.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import ops.school.api.util.Util;
 
 import javax.validation.constraints.NotBlank;
@@ -7,6 +9,7 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 public class RunOrders extends Base {
+    @TableId(type = IdType.INPUT)
     private String id;
     private Integer appId;
     @NotBlank
