@@ -1,62 +1,28 @@
 package ops.school.api.serviceimple;
 
-import com.alibaba.fastjson.JSON;
-import ops.school.api.config.Server;
-import ops.school.api.dao.*;
-import ops.school.api.dto.wxgzh.Message;
-import ops.school.api.entity.*;
-import ops.school.api.exception.YWException;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import ops.school.api.dao.OrdersMapper;
+import ops.school.api.entity.Orders;
+import ops.school.api.entity.Shop;
 import ops.school.api.service.OrdersService;
-import ops.school.api.service.SchoolService;
-import ops.school.api.service.WxUserService;
 import ops.school.api.util.RedisUtil;
-import ops.school.api.wx.refund.RefundUtil;
-import ops.school.api.wxutil.AmountUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import javax.validation.Valid;
-import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 @Service
-public class OrdersServiceImple implements OrdersService {
+public class OrdersServiceImple extends ServiceImpl<OrdersMapper, Orders> implements OrdersService {
 
     @Autowired
     private OrdersMapper ordersMapper;
-    @Autowired
-    private OrderProductMapper orderProductMapper;
-    @Autowired
-    private WxUserService wxUserService;
-    @Autowired
-    private ShopMapper shopMapper;
-    @Autowired
-    private SchoolService schoolService;
-    @Autowired
-    private ProductMapper productMapper;
-    @Autowired
-    private ProductAttributeMapper productAttributeMapper;
-    @Autowired
-    private FloorMapper floorMapper;
-    @Autowired
-    private FullCutMapper fullCutMapper;
-    @Autowired
-    private ApplicationMapper applicationMapper;
-    @Autowired
-    private WxUserBellMapper wxUserBellMapper;
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
     @Autowired
     private RedisUtil cache;
 
-    @Transactional
+  /*  @Transactional
     @Override
     public void addTakeout(Integer[] productIds, Integer[] attributeIndex, Integer[] counts, @Valid Orders orders) {
         WxUser wxUser = wxUserService.findById(orders.getOpenId());
@@ -93,6 +59,11 @@ public class OrdersServiceImple implements OrdersService {
         orders.takeoutinit1(wxUser, school, shop, floor, totalcount, isDiscount, fullCutMapper.findByShop(shop.getId()),
                 boxcount);
         ordersMapper.insert(orders);
+    }*/
+
+    @Override
+    public int pl(String id) {
+        return ordersMapper.pl(id);
     }
 
     @Override
@@ -107,10 +78,10 @@ public class OrdersServiceImple implements OrdersService {
 
     @Override
     public Orders findById(String orderId) {
-        return ordersMapper.selectByPrimaryKey(orderId);
+        return ordersMapper.selectById(orderId);
     }
 
-    @Transactional
+    /*@Transactional
     @Override
     public int paySuccess(String orderId, String payment) {
         Map<String, Object> map = new HashMap<>();
@@ -127,14 +98,14 @@ public class OrdersServiceImple implements OrdersService {
             stringRedisTemplate.convertAndSend(Server.SOCKET, ordersStr);
         }
         return rs;
-    }
+    }*/
 
     @Override
     public List<Orders> findByShopByDjs(int shopId) {
         return ordersMapper.findByShopByDjs(shopId);
     }
 
-    @Transactional
+    /*@Transactional
     @Override
     public int shopAcceptOrderById(String orderId) {
         Orders orders = findById(orderId);
@@ -163,7 +134,7 @@ public class OrdersServiceImple implements OrdersService {
             }
             return 0;
         }
-    }
+    }*/
 
     @Override
     public List<Orders> findByShop(int shopId, int page, int size) {
@@ -179,7 +150,7 @@ public class OrdersServiceImple implements OrdersService {
         ordersMapper.remove();
     }
 
-    @Transactional
+   /* @Transactional
     @Override
     public int pay(Orders orders) {
         Shop shop = shopMapper.selectByPrimaryKey(orders.getShopId());
@@ -209,9 +180,9 @@ public class OrdersServiceImple implements OrdersService {
         } else {
             throw new YWException("余额不足");
         }
-    }
+    }*/
 
-    @Transactional
+   /* @Transactional
     @Override
     public int cancel(String id) {
         Orders orders = ordersMapper.selectByPrimaryKey(id);
@@ -243,7 +214,7 @@ public class OrdersServiceImple implements OrdersService {
             }
         }
         return 0;
-    }
+    }*/
 
     @Override
     public int countBySchoolId(int schoolId) {

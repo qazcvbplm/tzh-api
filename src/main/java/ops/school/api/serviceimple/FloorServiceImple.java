@@ -1,5 +1,6 @@
 package ops.school.api.serviceimple;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import ops.school.api.dao.FloorMapper;
 import ops.school.api.dao.WxUserMapper;
 import ops.school.api.entity.Floor;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class FloorServiceImple implements FloorService {
+public class FloorServiceImple extends ServiceImpl<FloorMapper, Floor> implements FloorService {
 
     @Autowired
     private FloorMapper floorMapper;
@@ -20,7 +21,7 @@ public class FloorServiceImple implements FloorService {
     @Override
     public void add(Floor floor) {
         floor.setSort(System.currentTimeMillis());
-        floorMapper.insert(floor);
+        this.save(floor);
     }
 
     @Override
@@ -38,10 +39,5 @@ public class FloorServiceImple implements FloorService {
                 break;
         }
         return floorMapper.find(floor);
-    }
-
-    @Override
-    public int update(Floor floor) {
-        return floorMapper.updateByPrimaryKeySelective(floor);
     }
 }

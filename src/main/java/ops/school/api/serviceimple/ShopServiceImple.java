@@ -1,45 +1,27 @@
 package ops.school.api.serviceimple;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import ops.school.api.dao.*;
-import ops.school.api.dto.SenderTj;
-import ops.school.api.dto.ShopTj;
-import ops.school.api.entity.*;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import ops.school.api.dao.ShopMapper;
+import ops.school.api.entity.Shop;
 import ops.school.api.exception.YWException;
 import ops.school.api.service.ShopService;
-import ops.school.api.util.ShopTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.validation.Valid;
-import java.math.BigDecimal;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
-public class ShopServiceImple implements ShopService {
+public class ShopServiceImple extends ServiceImpl<ShopMapper, Shop> implements ShopService {
 
     @Autowired
     private ShopMapper shopMapper;
-    @Autowired
-    private FullCutMapper fullCutMapper;
-    @Autowired
-    private RunOrdersMapper runOrdersMapper;
-    @Autowired
-    private ProductMapper productMapper;
-    @Autowired
-    private ShopOpenTimeMapper shopOpenTimeMapper;
-    @Autowired
-    private OrdersMapper ordersMapper;
 
 
     @Override
     public void add(Shop shop) {
         if (shopMapper.checkByLoginName(shop.getShopLoginName()) == null) {
             shop.setSort(System.currentTimeMillis());
-            shopMapper.insert(shop);
+            this.add(shop);
         } else {
             throw new YWException("登录名重复请重新 输入");
         }
@@ -57,28 +39,9 @@ public class ShopServiceImple implements ShopService {
                 throw new YWException("登录名重复请重新 输入");
             }
         }
-        return shopMapper.updateById(shop);
+        return this.updateById(shop) ? 1 : 0;
     }
 
-    @Override
-    public void addFullCut(@Valid FullCut fullcut) {
-        fullCutMapper.insert(fullcut);
-    }
-
-    @Override
-    public int deleteFullCut(int id) {
-        return fullCutMapper.delete(id);
-    }
-
-    @Override
-    public List<FullCut> findFullCut(int shopId) {
-        return fullCutMapper.findByShop(shopId);
-    }
-
-    @Override
-    public int count(Shop shop) {
-        return shopMapper.count(shop);
-    }
 
     @Override
     public Shop login(String loginName, String enCode) {
@@ -94,7 +57,7 @@ public class ShopServiceImple implements ShopService {
         }
     }
 
-    @Override
+   /* @Override
     public SenderTj statistics(Integer shopId, String beginTime, String endTime) {
         SenderTj rs = new SenderTj();
         rs.setTakeoutNosuccess(0);
@@ -116,12 +79,8 @@ public class ShopServiceImple implements ShopService {
             }
         }
         return rs;
-    }
+    }*/
 
-    @Override
-    public Shop findById(int id) {
-        return shopMapper.selectByPrimaryKey(id);
-    }
 
     @Override
     public int openorclose(Integer id) {
@@ -137,26 +96,8 @@ public class ShopServiceImple implements ShopService {
         return update(update);
     }
 
-    @Override
-    public int addOpenTime(@Valid ShopOpenTime time) {
-        time.setStartTimeLong(ShopTimeUtil.parse(time.getStartTime()));
-        time.setEndTimeLong(ShopTimeUtil.parse(time.getEndTime()));
-        return shopOpenTimeMapper.insert(time);
-    }
 
-    @Override
-    public int removeopentime(int id) {
-        return shopOpenTimeMapper.deleteById(id);
-    }
-
-    @Override
-    public List<ShopOpenTime> findOpenTime(int shopId) {
-        QueryWrapper<ShopOpenTime> query = new QueryWrapper<>();
-        query.eq("shop_id", shopId);
-        return shopOpenTimeMapper.selectPage(new Page<ShopOpenTime>(1, 100), query).getRecords();
-    }
-
-    @Override
+    /*@Override
     public ShopTj shopstatistics(Integer shopId, String beginTime, String endTime) {
         Map<String, Object> map = new HashMap<>();
         map.put("shopId", shopId);
@@ -169,5 +110,5 @@ public class ShopServiceImple implements ShopService {
             return rs;
         }
         return new ShopTj(0, 0, new BigDecimal(0), new BigDecimal(0), new BigDecimal(0), new BigDecimal(0));
-    }
+    }*/
 }

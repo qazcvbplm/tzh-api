@@ -1,32 +1,25 @@
 package ops.school.api.serviceimple;
 
 import com.alibaba.fastjson.JSON;
-import ops.school.api.config.Server;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import ops.school.api.dao.*;
 import ops.school.api.dto.wxgzh.Message;
-import ops.school.api.entity.*;
+import ops.school.api.entity.WxUser;
+import ops.school.api.entity.WxUserBell;
 import ops.school.api.exception.YWException;
 import ops.school.api.service.SchoolService;
 import ops.school.api.service.WxUserService;
-import ops.school.api.util.LoggerUtil;
 import ops.school.api.util.SpringUtil;
-import ops.school.api.util.Util;
-import ops.school.api.wxutil.WXpayUtil;
 import ops.school.api.wxutil.WxGUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
-public class WxUserServiceImple implements WxUserService {
+public class WxUserServiceImple extends ServiceImpl<WxUserMapper, WxUser> implements WxUserService {
 
     @Autowired
     private WxUserMapper wxUserMapper;
@@ -50,7 +43,7 @@ public class WxUserServiceImple implements WxUserService {
             wxUser = new WxUser(openid, client);
             wxUser.setAppId(appId);
             wxUser.setSchoolId(schoolId);
-            wxUserMapper.insert(wxUser);
+            this.save(wxUser);
         }
         return wxUser;
     }
@@ -65,8 +58,8 @@ public class WxUserServiceImple implements WxUserService {
                 throw new YWException("手机号码已被注册");
             }
         }
-        int i = wxUserMapper.updateByPrimaryKeySelective(wxUser);
-        if (SpringUtil.redisCache() && i > 0) {
+        boolean rs = this.updateById(wxUser);
+        if (SpringUtil.redisCache() && rs) {
             stringRedisTemplate.boundHashOps("WX_USER_LIST").delete(wxUser.getOpenId());
         }
         return wxUserMapper.selectByPrimaryKey(wxUser.getOpenId());
@@ -80,7 +73,7 @@ public class WxUserServiceImple implements WxUserService {
         return wxUserMapper.find(wxUser);
     }
 
-    @Override
+  /*  @Override
     public Object charge(String openId, int chargeId) {
         Charge charge = chargeMapper.selectByPrimaryKey(chargeId);
         WxUser wxUser = wxUserMapper.selectByPrimaryKey(openId);
@@ -91,10 +84,10 @@ public class WxUserServiceImple implements WxUserService {
                     "127.0.0.1", chargeId + "", Server.URL + "notify/charge");
         }
         return null;
-    }
+    }*/
 
 
-    @Transactional
+   /* @Transactional
     @Override
     public void chargeSuccess(String orderId, String openId, String attach) {
         WxUser wxUser = wxUserMapper.selectByPrimaryKey(openId);
@@ -129,7 +122,7 @@ public class WxUserServiceImple implements WxUserService {
                     new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
                     , "充值", userbell.getMoney() + "", null, null, null, null, null, "如有疑问请在小程序内联系客服人员！"));
         }
-    }
+    }*/
 
     @Override
     public void sendWXGZHM(String phone, Message message) {
@@ -140,10 +133,10 @@ public class WxUserServiceImple implements WxUserService {
         }
     }
 
-    @Override
+   /* @Override
     public Object findcharge(String openId) {
         return chargeLogMapper.findByOpenId(openId);
-    }
+    }*/
 
 
     @Override
@@ -158,18 +151,10 @@ public class WxUserServiceImple implements WxUserService {
                 return wxUser;
             }
         }
-        return wxUserMapper.selectByPrimaryKey(openId);
+        return wxUserMapper.selectById(openId);
     }
 
-    @Override
-    public int addSource(String openId, Integer source) {
-        WxUser wxUser = findById(openId);
-        Map<String, Object> map2 = new HashMap<>();
-        map2.put("phone", wxUser.getOpenId() + "-" + wxUser.getPhone());
-        map2.put("source", source);
-        wxUserBellMapper.addSource(map2);
-        return 0;
-    }
+
 
     @Override
     public int countBySchoolId(int schoolId) {
@@ -193,10 +178,10 @@ public class WxUserServiceImple implements WxUserService {
         return wxUserMapper.findByschoolAndPhone(query);
     }
 
-    @Override
+  /*  @Override
     public WxUserBell getbell(String openId) {
         WxUser wxUser = findById(openId);
         return wxUserBellMapper.selectByPrimaryKey(wxUser.getOpenId() + "-" + wxUser.getPhone());
-    }
+    }*/
 
 }

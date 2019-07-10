@@ -1,5 +1,6 @@
 package ops.school.api.serviceimple;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import ops.school.api.dao.ProductCategoryMapper;
 import ops.school.api.entity.ProductCategory;
 import ops.school.api.service.ProductCategoryService;
@@ -10,7 +11,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Service
-public class ProductCategoryServiceImple implements ProductCategoryService {
+public class ProductCategoryServiceImple extends ServiceImpl<ProductCategoryMapper, ProductCategory> implements ProductCategoryService {
 
     @Autowired
     private ProductCategoryMapper productCategoryMapper;
@@ -18,7 +19,7 @@ public class ProductCategoryServiceImple implements ProductCategoryService {
     @Override
     public void add(@Valid ProductCategory productCategory) {
         productCategory.setSort(System.currentTimeMillis());
-        productCategoryMapper.insert(productCategory);
+        this.save(productCategory);
     }
 
     @Override
@@ -26,8 +27,4 @@ public class ProductCategoryServiceImple implements ProductCategoryService {
         return productCategoryMapper.findByShop(shopId);
     }
 
-    @Override
-    public int update(ProductCategory pc) {
-        return productCategoryMapper.updateByPrimaryKeySelective(pc);
-    }
 }

@@ -1,58 +1,26 @@
 package ops.school.api.serviceimple;
 
 import com.alibaba.fastjson.JSON;
-import ops.school.api.config.Server;
-import ops.school.api.dao.*;
-import ops.school.api.dto.SenderTj;
-import ops.school.api.dto.redis.SchoolAddMoneyDTO;
-import ops.school.api.dto.redis.SenderAddMoneyDTO;
-import ops.school.api.dto.redis.WxUserAddSourceDTO;
-import ops.school.api.dto.wxgzh.Message;
-import ops.school.api.entity.*;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import ops.school.api.dao.SenderMapper;
+import ops.school.api.entity.Sender;
 import ops.school.api.exception.YWException;
-import ops.school.api.service.SchoolService;
 import ops.school.api.service.SenderService;
-import ops.school.api.service.WxUserService;
-import ops.school.api.util.LoggerUtil;
 import ops.school.api.util.RedisUtil;
 import ops.school.api.util.SpringUtil;
-import ops.school.api.wx.towallet.WeChatPayUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
-import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
-public class SenderServiceImple implements SenderService {
+public class SenderServiceImple extends ServiceImpl<SenderMapper, Sender> implements SenderService {
 
     @Autowired
     private SenderMapper senderMapper;
     @Autowired
-    private WxUserService wxUserService;
-    @Autowired
-    private OrdersMapper ordersMapper;
-    @Autowired
-    private RunOrdersMapper runordersMapper;
-    @Autowired
-    private WxUserBellMapper wxUserBellMapper;
-    @Autowired
     private StringRedisTemplate stringRedisTemplate;
-    @Autowired
-    private SchoolService schoolService;
-    @Autowired
-    private TxLogMapper txLogMapper;
-    @Autowired
-    private ShopMapper shopMapper;
-    @Autowired
-    private OrdersCompleteMapper ocm;
     @Autowired
     private RedisUtil cache;
 
@@ -115,7 +83,7 @@ public class SenderServiceImple implements SenderService {
         return null;
     }
 
-    @Override
+   /* @Override
     public List<Orders> findorderbydjs(int senderId, int page, int size, String status) {
         Sender sender = findById(senderId);
         sender.setPage(page);
@@ -126,9 +94,9 @@ public class SenderServiceImple implements SenderService {
         } else {
             return null;
         }
-    }
+    }*/
 
-    @Override
+   /* @Override
     public int acceptOrder(int senderId, String orderId) {
         Sender sender = findById(senderId);
         Orders orders = ordersMapper.selectByPrimaryKey(orderId);
@@ -148,14 +116,14 @@ public class SenderServiceImple implements SenderService {
                     null, " 配送员正火速配送中，请耐心等待！"));
         }
         return rs;
-    }
+    }*/
 
-    @Override
+   /* @Override
     public int sendergetorder(String orderId) {
         return ordersMapper.getorder(orderId);
-    }
+    }*/
 
-    @Transactional
+  /*  @Transactional
     @Override
     public void end(String orderId, boolean end) {
         Orders orders = ordersMapper.selectByPrimaryKey(orderId);
@@ -237,9 +205,9 @@ public class SenderServiceImple implements SenderService {
             wxUserService.sendWXGZHM(wxUser.getPhone(), message);
 
         }
-    }
+    }*/
 
-    @Override
+   /* @Override
     public void endRun(String orderId) {
         if (runordersMapper.end(orderId) == 1) {
             RunOrders orders = runordersMapper.selectByPrimaryKey(orderId);
@@ -268,7 +236,7 @@ public class SenderServiceImple implements SenderService {
                     null, "成功获得" + orders.getTotalPrice().intValue() + "积分，可以前往积分商城兑换哟！"));
 
         }
-    }
+    }*/
 
     /*
      * public void addsource(String openid,int source){ //增加积分 WxUser
@@ -278,7 +246,7 @@ public class SenderServiceImple implements SenderService {
      * wxUserBellMapper.addSource(map2); }
      */
 
-    public void senderAddMoney(BigDecimal amount, Integer senderId) {
+   /* public void senderAddMoney(BigDecimal amount, Integer senderId) {
         if (senderId == 0) {
             return;
         }
@@ -291,9 +259,9 @@ public class SenderServiceImple implements SenderService {
         if (wxUserBellMapper.charge(map) == 0) {
             LoggerUtil.log("配送员送达订单增加余额失败：" + amount.toString());
         }
-    }
+    }*/
 
-    @Override
+   /* @Override
     public List<RunOrders> findorderbyrundjs(int senderId, int page, int size, String status) {
         Sender sender = findById(senderId);
         sender.setPage(page);
@@ -304,9 +272,9 @@ public class SenderServiceImple implements SenderService {
         } else {
             return null;
         }
-    }
+    }*/
 
-    @Override
+   /* @Override
     public int acceptOrderRun(int senderId, String orderId) {
         Sender sender = findById(senderId);
         RunOrders orders = runordersMapper.selectByPrimaryKey(orderId);
@@ -326,9 +294,9 @@ public class SenderServiceImple implements SenderService {
                     null, " 配送员正火速配送中，请耐心等待！"));
         }
         return rs;
-    }
+    }*/
 
-    @Override
+  /*  @Override
     public SenderTj statistics(int senderId, String beginTime, String endTime) {
         SenderTj rs = new SenderTj();
         Map<String, Object> map = new HashMap<>();
@@ -358,14 +326,14 @@ public class SenderServiceImple implements SenderService {
                 rs.setRun_price(rs.getRun_price().add(temp.getTotalPrice()));
         }
         return rs;
-    }
+    }*/
 
     @Override
     public int count(Sender sender) {
         return senderMapper.count(sender);
     }
 
-    @Transactional
+   /* @Transactional
     public int tx(String senderId, BigDecimal amount) {
         Sender sender = senderMapper.check(senderId);
         WxUser query = new WxUser();
@@ -399,14 +367,14 @@ public class SenderServiceImple implements SenderService {
             return 2;
         }
         throw new YWException("余额不足");
-    }
+    }*/
 
     @Override
     public int finddsh(int schoolId) {
         return senderMapper.finddsh(schoolId);
     }
 
-    @Transactional
+   /* @Transactional
     @Override
     public int tx2(String senderId, String userId) {
         Sender sender = senderMapper.check(senderId);
@@ -440,6 +408,6 @@ public class SenderServiceImple implements SenderService {
             return 2;
         }
         throw new YWException("余额不足");
-    }
+    }*/
 
 }

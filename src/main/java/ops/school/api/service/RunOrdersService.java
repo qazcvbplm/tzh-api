@@ -1,11 +1,14 @@
 package ops.school.api.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import ops.school.api.entity.RunOrders;
 
 import javax.validation.Valid;
 import java.util.List;
 
-public interface RunOrdersService {
+public interface RunOrdersService extends IService<RunOrders> {
+
+    int pl(String id);
 
     void add(@Valid RunOrders orders);
 
@@ -16,8 +19,6 @@ public interface RunOrdersService {
     RunOrders findById(String orderId);
 
     int paySuccess(String orderId, String string);
-
-    int pay(RunOrders orders);
 
     void remove();
 

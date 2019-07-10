@@ -1,18 +1,13 @@
 package ops.school.api.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import ops.school.api.entity.SourceOrder;
 
-import javax.validation.Valid;
 import java.util.List;
 
-public interface SourceOrderService {
-
-    String add(Integer id, @Valid SourceOrder sourceOrder);
+public interface SourceOrderService extends IService<SourceOrder> {
 
     List<SourceOrder> find(SourceOrder sourceOrder);
 
-    int update(SourceOrder sourceOrder);
-
-    int count(SourceOrder sourceOrder);
 
 }

@@ -15,10 +15,6 @@ public class AddressServiceImple extends ServiceImpl<AddressMapper, Address> imp
     @Autowired
     private AddressMapper addressMapper;
 
-    @Override
-    public void add(Address address) {
-        addressMapper.insert(address);
-    }
 
     @Override
     public List<Address> find(Address address) {
@@ -33,10 +29,6 @@ public class AddressServiceImple extends ServiceImpl<AddressMapper, Address> imp
         return addressMapper.find(address);
     }
 
-    @Override
-    public int update(Address address) {
-        return addressMapper.updateByPrimaryKeySelective(address);
-    }
 
 
 }

@@ -1,15 +1,14 @@
 package ops.school.api.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import ops.school.api.entity.School;
 
-import javax.validation.Valid;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
-public interface SchoolService {
+public interface SchoolService extends IService<School> {
 
-    void add(@Valid School school) throws Exception;
+    void add(School school) throws Exception;
 
     List<School> find(School school);
 
@@ -19,12 +18,11 @@ public interface SchoolService {
 
     School login(String loginName, String enCode);
 
-
-    String tx(int schoolId, BigDecimal amount, String openId);
-
     void chargeUse(Map<String, Object> map);
 
     int sendertx(Map<String, Object> map);
 
     void charge(Map<String, Object> map2);
+
+    int tx(Map<String, Object> map);
 }

@@ -12,6 +12,8 @@ public class Evaluate extends Base {
     @NotBlank
     private String orderid;
     @NotNull
+    private Integer shopId;
+    @NotNull
     private String content;
     @NotNull
     private Integer core;
@@ -20,6 +22,13 @@ public class Evaluate extends Base {
 
     private String createTime;
 
+    public Integer getShopId() {
+        return shopId;
+    }
+
+    public void setShopId(Integer shopId) {
+        this.shopId = shopId;
+    }
 
     public Integer getSchoolId() {
         return schoolId;

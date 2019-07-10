@@ -1,29 +1,21 @@
 package ops.school.api.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import ops.school.api.dto.wxgzh.Message;
 import ops.school.api.entity.WxUser;
-import ops.school.api.entity.WxUserBell;
 
 import java.util.List;
 
-public interface WxUserService {
+public interface WxUserService extends IService<WxUser> {
 
 
     WxUser update(WxUser wxUser);
 
     List<WxUser> find(WxUser wxUser);
 
-    Object charge(String string, int chargeId);
-
-    void chargeSuccess(String orderId, String openId, String attach);
-
     void sendWXGZHM(String phone, Message message);
 
-    Object findcharge(String openId);
-
     WxUser findById(String openId);
-
-    int addSource(String openId, Integer source);
 
     int countBySchoolId(int schoolId);
 
@@ -35,5 +27,5 @@ public interface WxUserService {
 
     WxUser findByschoolAndPhone(WxUser query);
 
-    WxUserBell getbell(String openId);
+
 }

@@ -1,16 +1,14 @@
 package ops.school.api.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import ops.school.api.entity.SourceProduct;
 
-import javax.validation.Valid;
 import java.util.List;
 
-public interface SourceProductService {
+public interface SourceProductService extends IService<SourceProduct> {
 
-    void add(@Valid SourceProduct sourceProduct);
 
     List<SourceProduct> find(SourceProduct sourceProduct);
 
-    int update(SourceProduct sourceProduct);
 
 }
