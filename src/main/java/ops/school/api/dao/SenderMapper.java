@@ -1,10 +1,11 @@
 package ops.school.api.dao;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import ops.school.api.entity.Sender;
 
 import java.util.List;
 
-public interface SenderMapper {
+public interface SenderMapper extends BaseMapper<Sender> {
     int insert(Sender record);
 
     int insertSelective(Sender record);

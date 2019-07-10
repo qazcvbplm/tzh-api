@@ -1,5 +1,6 @@
 package ops.school.api.dao;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import ops.school.api.dto.RunOrdersTj;
 import ops.school.api.entity.RunOrders;
 import ops.school.api.entity.Sender;
@@ -9,7 +10,7 @@ import org.apache.ibatis.annotations.Select;
 import java.util.List;
 import java.util.Map;
 
-public interface RunOrdersMapper {
+public interface RunOrdersMapper extends BaseMapper<RunOrders> {
     int insert(RunOrders record);
 
 

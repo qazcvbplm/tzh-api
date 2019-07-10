@@ -1,10 +1,11 @@
 package ops.school.api.dao;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import ops.school.api.entity.WxUserBell;
 
 import java.util.Map;
 
-public interface WxUserBellMapper {
+public interface WxUserBellMapper extends BaseMapper<WxUserBell> {
 
     int insert(WxUserBell record);
 

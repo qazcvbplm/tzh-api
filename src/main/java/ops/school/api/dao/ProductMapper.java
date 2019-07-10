@@ -1,12 +1,13 @@
 package ops.school.api.dao;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import ops.school.api.entity.Product;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
-public interface ProductMapper {
+public interface ProductMapper extends BaseMapper<Product> {
     int insert(Product record);
 
     int insertSelective(Product record);

@@ -1,5 +1,6 @@
 package ops.school.api.dao;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import ops.school.api.entity.Orders;
 import ops.school.api.entity.Sender;
 import ops.school.api.entity.Shop;
@@ -7,7 +8,7 @@ import ops.school.api.entity.Shop;
 import java.util.List;
 import java.util.Map;
 
-public interface OrdersMapper {
+public interface OrdersMapper extends BaseMapper<Orders> {
     int insert(Orders record);
 
     Orders selectByPrimaryKey(String id);

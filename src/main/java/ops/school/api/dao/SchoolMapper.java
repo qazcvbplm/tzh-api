@@ -1,11 +1,12 @@
 package ops.school.api.dao;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import ops.school.api.entity.School;
 
 import java.util.List;
 import java.util.Map;
 
-public interface SchoolMapper {
+public interface SchoolMapper extends BaseMapper<School> {
     int insert(School record);
 
     School selectByPrimaryKey(Integer id);

@@ -1,10 +1,11 @@
 package ops.school.api.dao;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import ops.school.api.entity.Charge;
 
 import java.util.List;
 
-public interface ChargeMapper {
+public interface ChargeMapper extends BaseMapper<Charge> {
     int insert(Charge record);
 
     Charge selectByPrimaryKey(Integer id);

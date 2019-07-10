@@ -1,10 +1,11 @@
 package ops.school.api.dao;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import ops.school.api.entity.ProductCategory;
 
 import java.util.List;
 
-public interface ProductCategoryMapper {
+public interface ProductCategoryMapper extends BaseMapper<ProductCategory> {
     int insert(ProductCategory record);
 
     int insertSelective(ProductCategory record);

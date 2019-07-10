@@ -1,10 +1,11 @@
 package ops.school.api.dao;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import ops.school.api.entity.SecondHand;
 
 import java.util.List;
 
-public interface SecondHandMapper {
+public interface SecondHandMapper extends BaseMapper<SecondHand> {
     int insert(SecondHand record);
 
     int insertSelective(SecondHand record);

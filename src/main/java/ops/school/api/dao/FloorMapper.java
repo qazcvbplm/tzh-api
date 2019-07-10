@@ -1,10 +1,11 @@
 package ops.school.api.dao;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import ops.school.api.entity.Floor;
 
 import java.util.List;
 
-public interface FloorMapper {
+public interface FloorMapper extends BaseMapper<Floor> {
     int insert(Floor record);
 
     int insertSelective(Floor record);

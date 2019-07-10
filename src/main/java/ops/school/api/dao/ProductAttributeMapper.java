@@ -1,8 +1,10 @@
 package ops.school.api.dao;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import ops.school.api.entity.Product;
 import ops.school.api.entity.ProductAttribute;
 
-public interface ProductAttributeMapper {
+public interface ProductAttributeMapper extends BaseMapper<Product> {
     int insert(ProductAttribute record);
 
     int insertSelective(ProductAttribute record);

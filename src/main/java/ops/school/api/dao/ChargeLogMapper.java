@@ -1,11 +1,12 @@
 package ops.school.api.dao;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import ops.school.api.entity.ChargeLog;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-public interface ChargeLogMapper {
+public interface ChargeLogMapper extends BaseMapper<ChargeLog> {
     int insert(ChargeLog record);
 
     int insertSelective(ChargeLog record);

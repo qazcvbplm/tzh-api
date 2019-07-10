@@ -1,11 +1,12 @@
 package ops.school.api.dao;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import ops.school.api.entity.Evaluate;
 
 import java.util.List;
 import java.util.Map;
 
-public interface EvaluateMapper {
+public interface EvaluateMapper extends BaseMapper<Evaluate> {
     int insert(Evaluate record);
 
     int insertSelective(Evaluate record);

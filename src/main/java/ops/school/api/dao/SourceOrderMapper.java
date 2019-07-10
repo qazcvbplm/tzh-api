@@ -1,10 +1,11 @@
 package ops.school.api.dao;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import ops.school.api.entity.SourceOrder;
 
 import java.util.List;
 
-public interface SourceOrderMapper {
+public interface SourceOrderMapper extends BaseMapper<SourceOrder> {
     int insert(SourceOrder record);
 
     int insertSelective(SourceOrder record);
