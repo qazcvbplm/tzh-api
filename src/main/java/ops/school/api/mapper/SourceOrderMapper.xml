@@ -26,18 +26,7 @@
         from source_order
         where Id = #{id,jdbcType=VARCHAR}
     </select>
-    <insert id="insert" parameterType="ops.school.api.entity.SourceOrder">
-    insert into source_order (Id, app_id, school_id, 
-      open_id, address_name, address_phone, 
-      address_detail, pay_price, 
-      floor_id, product_name, 
-      product_image)
-    values (#{id,jdbcType=VARCHAR}, #{appId,jdbcType=INTEGER}, #{schoolId,jdbcType=INTEGER}, 
-      #{openId,jdbcType=VARCHAR}, #{addressName,jdbcType=VARCHAR}, #{addressPhone,jdbcType=VARCHAR}, 
-      #{addressDetail,jdbcType=VARCHAR},#{payPrice,jdbcType=INTEGER}, 
-      #{floorId,jdbcType=INTEGER}, #{productName,jdbcType=VARCHAR}, 
-      #{productImage,jdbcType=VARCHAR})
-  </insert>
+
     <update id="updateByPrimaryKeySelective" parameterType="ops.school.api.entity.SourceOrder">
         update source_order
         <set>
