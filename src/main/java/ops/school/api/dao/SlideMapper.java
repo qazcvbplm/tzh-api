@@ -6,9 +6,6 @@ import ops.school.api.entity.Slide;
 import java.util.List;
 
 public interface SlideMapper extends BaseMapper<Slide> {
-    int insert(Slide record);
-
-    int insertSelective(Slide record);
 
 
     Slide findById(Integer id);

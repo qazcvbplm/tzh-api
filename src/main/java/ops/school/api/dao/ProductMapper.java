@@ -8,9 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 public interface ProductMapper extends BaseMapper<Product> {
-    int insert(Product record);
-
-    int insertSelective(Product record);
 
     Product selectByPrimaryKey(Integer id);
 

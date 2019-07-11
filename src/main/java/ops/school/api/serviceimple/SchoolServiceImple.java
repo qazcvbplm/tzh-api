@@ -106,5 +106,10 @@ public class SchoolServiceImple extends ServiceImpl<SchoolMapper, School> implem
         return schoolMapper.tx(map);
     }
 
+    @Override
+    public Integer endOrder(Map<String, Object> map) {
+        return schoolMapper.endOrder(map);
+    }
+
 
 }

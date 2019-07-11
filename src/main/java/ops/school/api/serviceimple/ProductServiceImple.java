@@ -61,5 +61,11 @@ public class ProductServiceImple extends ServiceImpl<ProductMapper, Product> imp
 
     }
 
+    @Override
+    public Integer sales(Map<String, Object> map) {
+        productMapper.sale(map);
+        return 1;
+    }
+
 
 }

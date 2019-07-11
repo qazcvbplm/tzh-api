@@ -6,7 +6,6 @@ import ops.school.api.entity.Charge;
 import java.util.List;
 
 public interface ChargeMapper extends BaseMapper<Charge> {
-    int insert(Charge record);
 
     Charge selectByPrimaryKey(Integer id);
 

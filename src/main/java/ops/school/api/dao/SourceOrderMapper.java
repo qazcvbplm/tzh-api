@@ -6,9 +6,6 @@ import ops.school.api.entity.SourceOrder;
 import java.util.List;
 
 public interface SourceOrderMapper extends BaseMapper<SourceOrder> {
-    int insert(SourceOrder record);
-
-    int insertSelective(SourceOrder record);
 
     SourceOrder selectByPrimaryKey(String id);
 

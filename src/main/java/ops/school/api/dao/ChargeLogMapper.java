@@ -7,9 +7,6 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public interface ChargeLogMapper extends BaseMapper<ChargeLog> {
-    int insert(ChargeLog record);
-
-    int insertSelective(ChargeLog record);
 
     ChargeLog selectByPrimaryKey(Integer id);
 

@@ -7,8 +7,6 @@ import java.util.Map;
 
 public interface WxUserBellMapper extends BaseMapper<WxUserBell> {
 
-    int insert(WxUserBell record);
-
 
     WxUserBell selectByPrimaryKey(String phone);
 

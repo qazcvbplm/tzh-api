@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Map;
 
 public interface RunOrdersMapper extends BaseMapper<RunOrders> {
-    int insert(RunOrders record);
 
 
     RunOrders selectByPrimaryKey(String id);

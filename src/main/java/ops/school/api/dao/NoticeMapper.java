@@ -6,9 +6,6 @@ import ops.school.api.entity.Notice;
 import java.util.List;
 
 public interface NoticeMapper extends BaseMapper<Notice> {
-    int insert(Notice record);
-
-    int insertSelective(Notice record);
 
     Notice selectByPrimaryKey(Integer id);
 

@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Map;
 
 public interface OrdersMapper extends BaseMapper<Orders> {
-    int insert(Orders record);
 
     Orders selectByPrimaryKey(String id);
 

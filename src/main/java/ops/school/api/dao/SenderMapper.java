@@ -6,9 +6,6 @@ import ops.school.api.entity.Sender;
 import java.util.List;
 
 public interface SenderMapper extends BaseMapper<Sender> {
-    int insert(Sender record);
-
-    int insertSelective(Sender record);
 
     Sender selectByPrimaryKey(Integer id);
 

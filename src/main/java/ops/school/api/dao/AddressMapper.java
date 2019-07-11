@@ -6,9 +6,6 @@ import ops.school.api.entity.Address;
 import java.util.List;
 
 public interface AddressMapper extends BaseMapper<Address> {
-    int insert(Address record);
-
-    int insertSelective(Address record);
 
     Address selectByPrimaryKey(Integer id);
 

@@ -6,9 +6,6 @@ import ops.school.api.entity.SourceProduct;
 import java.util.List;
 
 public interface SourceProductMapper extends BaseMapper<SourceProduct> {
-    int insert(SourceProduct record);
-
-    int insertSelective(SourceProduct record);
 
     SourceProduct selectByPrimaryKey(Integer id);
 

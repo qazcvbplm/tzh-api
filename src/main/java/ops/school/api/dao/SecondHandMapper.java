@@ -6,9 +6,6 @@ import ops.school.api.entity.SecondHand;
 import java.util.List;
 
 public interface SecondHandMapper extends BaseMapper<SecondHand> {
-    int insert(SecondHand record);
-
-    int insertSelective(SecondHand record);
 
     SecondHand selectByPrimaryKey(Integer id);
 

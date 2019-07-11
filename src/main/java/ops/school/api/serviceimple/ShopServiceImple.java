@@ -97,18 +97,4 @@ public class ShopServiceImple extends ServiceImpl<ShopMapper, Shop> implements S
     }
 
 
-    /*@Override
-    public ShopTj shopstatistics(Integer shopId, String beginTime, String endTime) {
-        Map<String, Object> map = new HashMap<>();
-        map.put("shopId", shopId);
-        map.put("beginTime", beginTime);
-        map.put("endTime", endTime);
-        List<Orders> list = ordersMapper.shopsta(map);
-        if (list.size() > 0) {
-            Orders temp = list.get(0);
-            ShopTj rs = new ShopTj(Integer.valueOf(temp.getRemark()), temp.getFloorId(), temp.getPayPrice(), temp.getComplete(), temp.getBoxPrice(), temp.getSendPrice());
-            return rs;
-        }
-        return new ShopTj(0, 0, new BigDecimal(0), new BigDecimal(0), new BigDecimal(0), new BigDecimal(0));
-    }*/
 }

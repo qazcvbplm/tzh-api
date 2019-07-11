@@ -25,4 +25,6 @@ public interface SchoolService extends IService<School> {
     void charge(Map<String, Object> map2);
 
     int tx(Map<String, Object> map);
+
+    Integer endOrder(Map<String, Object> map);
 }

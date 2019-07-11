@@ -168,5 +168,10 @@ public class SenderServiceImple extends ServiceImpl<SenderMapper, Sender> implem
         return senderMapper.check(senderId);
     }
 
+    @Override
+    public List<Integer> findSenderIdBySchoolId(Integer schoolId) {
+        return senderMapper.findSenderIdBySchoolId(schoolId);
+    }
+
 
 }

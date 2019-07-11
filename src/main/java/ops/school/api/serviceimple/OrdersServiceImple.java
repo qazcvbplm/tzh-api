@@ -128,4 +128,9 @@ public class OrdersServiceImple extends ServiceImpl<OrdersMapper, Orders> implem
     public List<Orders> senderStatistics(Map<String, Object> map) {
         return ordersMapper.senderStatistics(map);
     }
+
+    @Override
+    public List<Orders> shopsta(Map<String, Object> map) {
+        return ordersMapper.shopsta(map);
+    }
 }

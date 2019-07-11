@@ -8,9 +8,6 @@ import org.apache.ibatis.annotations.Select;
 import java.util.List;
 
 public interface WxUserMapper extends BaseMapper<WxUser> {
-    int insert(WxUser record);
-
-    int insertSelective(WxUser record);
 
     WxUser selectByPrimaryKey(String openId);
 

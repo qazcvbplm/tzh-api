@@ -4,9 +4,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import ops.school.api.entity.Application;
 
 public interface ApplicationMapper extends BaseMapper<Application> {
-    int insert(Application record);
-
-    int insertSelective(Application record);
 
     Application selectByPrimaryKey(Integer id);
 

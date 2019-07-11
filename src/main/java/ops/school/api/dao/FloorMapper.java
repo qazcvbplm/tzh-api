@@ -6,9 +6,6 @@ import ops.school.api.entity.Floor;
 import java.util.List;
 
 public interface FloorMapper extends BaseMapper<Floor> {
-    int insert(Floor record);
-
-    int insertSelective(Floor record);
 
     Floor selectByPrimaryKey(Integer id);
 
