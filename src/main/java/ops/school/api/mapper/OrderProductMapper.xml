@@ -23,16 +23,7 @@
     from order_product
     where order_id=#{id}
   </select>
-    <insert id="insert" parameterType="ops.school.api.entity.OrderProduct">
-    insert into order_product (Id, product_name, product_image, 
-      product_count, product_discount, order_id, 
-      total_price, attribute_name, attribute_price,product_id
-      )
-    values (#{id,jdbcType=INTEGER}, #{productName,jdbcType=VARCHAR}, #{productImage,jdbcType=VARCHAR}, 
-      #{productCount,jdbcType=INTEGER}, #{productDiscount,jdbcType=DECIMAL}, #{orderId,jdbcType=VARCHAR}, 
-      #{totalPrice,jdbcType=DECIMAL}, #{attributeName,jdbcType=VARCHAR}, #{attributePrice,jdbcType=DECIMAL},#{productId}
-      )
-  </insert>
+
     <insert id="insertSelective" parameterType="ops.school.api.entity.OrderProduct">
         insert into order_product
         <trim prefix="(" suffix=")" suffixOverrides=",">

@@ -20,14 +20,7 @@
         from source_product
         where Id = #{id,jdbcType=INTEGER}
     </select>
-    <insert id="insert" parameterType="ops.school.api.entity.SourceProduct">
-    insert into source_product (Id, product_name, product_image, 
-      school_id, sale, is_show, 
-       price)
-    values (#{id,jdbcType=INTEGER}, #{productName,jdbcType=VARCHAR}, #{productImage,jdbcType=VARCHAR}, 
-      #{schoolId,jdbcType=INTEGER}, #{sale,jdbcType=INTEGER}, #{isShow,jdbcType=INTEGER}, 
-       #{price,jdbcType=INTEGER})
-  </insert>
+
     <update id="updateByPrimaryKeySelective" parameterType="ops.school.api.entity.SourceProduct">
         update source_product
         <set>

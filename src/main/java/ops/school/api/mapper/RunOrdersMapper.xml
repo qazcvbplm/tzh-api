@@ -36,18 +36,7 @@
     from run_orders
     where Id = #{id,jdbcType=VARCHAR}
   </select>
-    <insert id="insert" parameterType="ops.school.api.entity.RunOrders">
-    insert into run_orders (Id,app_id, address_name, address_phone, 
-      address_detail, school_id, open_id, 
-      total_price, create_time, remark, 
-      content, reserve_time, floor_id
-      )
-    values (#{id,jdbcType=VARCHAR},#{appId}, #{addressName,jdbcType=VARCHAR}, #{addressPhone,jdbcType=VARCHAR}, 
-      #{addressDetail,jdbcType=VARCHAR}, #{schoolId,jdbcType=INTEGER}, #{openId,jdbcType=VARCHAR}, 
-      #{totalPrice,jdbcType=DECIMAL},now(), #{remark,jdbcType=VARCHAR}, 
-      #{content,jdbcType=VARCHAR}, #{reserveTime,jdbcType=VARCHAR}, #{floorId,jdbcType=INTEGER} 
-      )
-  </insert>
+
 
     <select id="count" parameterType="ops.school.api.entity.Orders" resultType="int">
         select count(*) from run_orders

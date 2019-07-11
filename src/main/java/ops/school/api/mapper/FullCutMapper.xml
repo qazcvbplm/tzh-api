@@ -15,12 +15,7 @@
     where shop_id = #{shopId,jdbcType=INTEGER}
     order by full desc
   </select>
-    <insert id="insert" parameterType="ops.school.api.entity.FullCut">
-    insert into full_cut ( shop_id, full, 
-      cut)
-    values ( #{shopId,jdbcType=INTEGER}, #{full,jdbcType=INTEGER}, 
-      #{cut,jdbcType=INTEGER})
-  </insert>
+
     <update id="delete" parameterType="int">
     update full_cut
     set shop_id = 0

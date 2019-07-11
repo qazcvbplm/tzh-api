@@ -18,14 +18,7 @@
         from notice
         where Id = #{id,jdbcType=INTEGER}
     </select>
-    <insert id="insert" parameterType="ops.school.api.entity.Notice">
-    insert into notice (Id, school_id, title, 
-      content
-      )
-    values (#{id,jdbcType=INTEGER}, #{schoolId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
-      #{content,jdbcType=VARCHAR}
-      )
-  </insert>
+
     <update id="updateByPrimaryKeySelective" parameterType="ops.school.api.entity.Notice">
         update notice
         <set>

@@ -29,16 +29,7 @@
     from application
     where Id = #{id,jdbcType=INTEGER}
   </select>
-    <insert id="insert" parameterType="ops.school.api.entity.Application">
-    insert into application (Id, vip_takeout_discount, vip_run_discount, 
-      money, useable_money, login_name, 
-      login_pass, vip_takeout_discount_flag, vip_run_discount_flag, 
-      max_school_count, is_delete)
-    values (#{id,jdbcType=INTEGER}, #{vipTakeoutDiscount,jdbcType=DECIMAL}, #{vipRunDiscount,jdbcType=DECIMAL}, 
-      #{money,jdbcType=DECIMAL}, #{useableMoney,jdbcType=DECIMAL}, #{loginName,jdbcType=VARCHAR}, 
-      #{loginPass,jdbcType=VARCHAR}, #{vipTakeoutDiscountFlag,jdbcType=INTEGER}, #{vipRunDiscountFlag,jdbcType=INTEGER}, 
-      #{maxSchoolCount,jdbcType=INTEGER}, #{isDelete,jdbcType=INTEGER})
-  </insert>
+
     <insert id="insertSelective" parameterType="ops.school.api.entity.Application">
         insert into application
         <trim prefix="(" suffix=")" suffixOverrides=",">

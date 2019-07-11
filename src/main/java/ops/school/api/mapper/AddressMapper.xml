@@ -38,13 +38,7 @@
     from address
     where Id = #{id,jdbcType=INTEGER}
   </select>
-    <insert id="insert" parameterType="ops.school.api.entity.Address">
-    insert into address ( name, floor_id, 
-      phone, detail, school_id,open_id)
-    values ( #{name,jdbcType=VARCHAR}, #{floorId,jdbcType=INTEGER}, 
-      #{phone,jdbcType=VARCHAR}, #{detail,jdbcType=VARCHAR}, #{schoolId,jdbcType=INTEGER},  #{openId,jdbcType=VARCHAR}
-      )
-  </insert>
+
 
     <update id="updateByPrimaryKeySelective" parameterType="ops.school.api.entity.Address">
         update address

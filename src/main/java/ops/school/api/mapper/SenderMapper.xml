@@ -80,12 +80,7 @@
     from sender
     where Id = #{id,jdbcType=INTEGER}
   </select>
-    <insert id="insert" parameterType="ops.school.api.entity.Sender">
-    insert into sender ( open_id, name, 
-      phone, class_no,school_id)
-    values ( #{openId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{classNo,jdbcType=VARCHAR},#{schoolId})
-  </insert>
+
     <update id="updateByPrimaryKeySelective" parameterType="ops.school.api.entity.Sender">
         update sender
         <set>

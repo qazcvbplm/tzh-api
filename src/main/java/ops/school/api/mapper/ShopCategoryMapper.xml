@@ -36,12 +36,7 @@
     from shop_category
     where Id = #{id,jdbcType=INTEGER}
   </select>
-    <insert id="insert" parameterType="ops.school.api.entity.ShopCategory">
-    insert into shop_category ( name, sort, 
-      school_id)
-    values ( #{name,jdbcType=VARCHAR}, #{sort,jdbcType=BIGINT}, 
-       #{schoolId,jdbcType=INTEGER})
-  </insert>
+
     <update id="updateByPrimaryKeySelective" parameterType="ops.school.api.entity.ShopCategory">
         update shop_category
         <set>

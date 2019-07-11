@@ -13,10 +13,6 @@
     from charge
     where Id = #{id,jdbcType=INTEGER}
   </select>
-    <insert id="insert" parameterType="ops.school.api.entity.Charge">
-    insert into charge (Id, full, send)
-    values (#{id,jdbcType=INTEGER}, #{full,jdbcType=INTEGER}, #{send,jdbcType=INTEGER})
-  </insert>
 
     <select id="find" resultMap="BaseResultMap">
   select * from charge where is_delete=0 order by full

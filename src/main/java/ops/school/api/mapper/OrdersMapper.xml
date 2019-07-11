@@ -187,26 +187,7 @@
     from orders
     where Id = #{id,jdbcType=VARCHAR}
   </select>
-    <insert id="insert" parameterType="ops.school.api.entity.Orders">
-    insert into orders (Id,app_id, school_id, school_top_down_price, 
-      shop_id, shop_name,shop_image, shop_address, 
-      shop_phone, open_id, address_name, 
-      address_phone, address_detail, floor_id, 
-      typ, box_price, 
-      send_price, send_base_price, send_add_distance_price, 
-      send_add_count_price, product_price, discount_type, 
-      discount_price, pay_price,remark,resever_time
-      )
-    values (#{id,jdbcType=VARCHAR}, #{appId},#{schoolId,jdbcType=INTEGER}, #{schoolTopDownPrice,jdbcType=DECIMAL}, 
-      #{shopId,jdbcType=INTEGER}, #{shopName,jdbcType=VARCHAR},#{shopImage,jdbcType=VARCHAR}, #{shopAddress,jdbcType=VARCHAR}, 
-      #{shopPhone,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, #{addressName,jdbcType=VARCHAR}, 
-      #{addressPhone,jdbcType=VARCHAR}, #{addressDetail,jdbcType=VARCHAR}, #{floorId,jdbcType=INTEGER}, 
-      #{typ,jdbcType=VARCHAR}, #{boxPrice,jdbcType=DECIMAL}, 
-      #{sendPrice,jdbcType=DECIMAL}, #{sendBasePrice,jdbcType=DECIMAL}, #{sendAddDistancePrice,jdbcType=DECIMAL}, 
-      #{sendAddCountPrice,jdbcType=DECIMAL}, #{productPrice,jdbcType=DECIMAL}, #{discountType,jdbcType=VARCHAR}, 
-      #{discountPrice,jdbcType=DECIMAL}, #{payPrice,jdbcType=DECIMAL},  
-      #{remark,jdbcType=VARCHAR},#{reseverTime})
-  </insert>
+
 
     <update id="shopAcceptOrderById" parameterType="ops.school.api.entity.Orders">
   update orders set status='商家已接手',water_number=#{waterNumber} where id=#{id} and status='待接手'

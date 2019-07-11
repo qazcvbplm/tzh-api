@@ -14,49 +14,8 @@
     if((select product.discount from product where product.id = product_attribute.product_id)=1,'0','1' ) as is_discount from product_attribute 
     where Id = #{id,jdbcType=INTEGER}
   </select>
-    <insert id="insert" parameterType="ops.school.api.entity.ProductAttribute">
-    insert into product_attribute ( product_id, name, 
-      price)
-    values (#{productId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
-      #{price,jdbcType=DECIMAL})
-  </insert>
-    <insert id="insertSelective" parameterType="ops.school.api.entity.ProductAttribute">
-        insert into product_attribute
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="id != null">
-                Id,
-            </if>
-            <if test="productId != null">
-                product_id,
-            </if>
-            <if test="name != null">
-                name,
-            </if>
-            <if test="price != null">
-                price,
-            </if>
-            <if test="isDelete != null">
-                is_delete,
-            </if>
-        </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="id != null">
-                #{id,jdbcType=INTEGER},
-            </if>
-            <if test="productId != null">
-                #{productId,jdbcType=INTEGER},
-            </if>
-            <if test="name != null">
-                #{name,jdbcType=VARCHAR},
-            </if>
-            <if test="price != null">
-                #{price,jdbcType=DECIMAL},
-            </if>
-            <if test="isDelete != null">
-                #{isDelete,jdbcType=INTEGER},
-            </if>
-        </trim>
-    </insert>
+
+
     <update id="updateByPrimaryKeySelective" parameterType="ops.school.api.entity.ProductAttribute">
         update product_attribute
         <set>

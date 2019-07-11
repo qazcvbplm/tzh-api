@@ -21,10 +21,7 @@
     <select id="findById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
   select * from slide where id=#{id}
   </select>
-    <insert id="insert" parameterType="ops.school.api.entity.Slide">
-    insert into slide (Id, image, path, school_id)
-    values (#{id,jdbcType=INTEGER}, #{image,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}, #{schoolId,jdbcType=INTEGER})
-  </insert>
+
     <insert id="insertSelective" parameterType="ops.school.api.entity.Slide">
         insert into slide
         <trim prefix="(" suffix=")" suffixOverrides=",">

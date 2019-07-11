@@ -17,10 +17,7 @@
     from wx_user_bell
     where phone = #{phone,jdbcType=VARCHAR}
   </select>
-    <insert id="insert" parameterType="ops.school.api.entity.WxUserBell">
-    insert into wx_user_bell (phone)
-    values (#{phone,jdbcType=VARCHAR})
-  </insert>
+
     <update id="addSource" parameterType="map">
    update wx_user_bell set source = source+#{source} where phone=#{phone} 
   </update>

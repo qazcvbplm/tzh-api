@@ -24,12 +24,7 @@
         from evaluate
         where Id = #{id,jdbcType=INTEGER}
     </select>
-    <insert id="insert" parameterType="ops.school.api.entity.Evaluate">
-    insert into evaluate (Id, orderId, content, 
-      core,school_id)
-    values (#{id,jdbcType=INTEGER}, #{orderid,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
-      #{core,jdbcType=INTEGER},#{schoolId,jdbcType=INTEGER})
-  </insert>
+
     <update id="updateByPrimaryKeySelective" parameterType="ops.school.api.entity.Evaluate">
         update evaluate
         <set>

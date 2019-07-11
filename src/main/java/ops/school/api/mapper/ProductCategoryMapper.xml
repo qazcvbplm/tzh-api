@@ -18,12 +18,7 @@
     where shop_id = #{shopId,jdbcType=INTEGER} and is_delete=0
     order by sort desc
   </select>
-    <insert id="insert" parameterType="ops.school.api.entity.ProductCategory">
-    insert into product_category (Id, name, 
-      shop_id, sort)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},  
-      #{shopId,jdbcType=INTEGER}, #{sort,jdbcType=BIGINT})
-  </insert>
+
     <update id="updateByPrimaryKeySelective" parameterType="ops.school.api.entity.ProductCategory">
         update product_category
         <set>

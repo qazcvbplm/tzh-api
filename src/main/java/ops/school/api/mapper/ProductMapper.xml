@@ -69,16 +69,7 @@
     from product
     where Id = #{id,jdbcType=INTEGER}
   </select>
-    <insert id="insert" parameterType="ops.school.api.entity.Product" useGeneratedKeys="true" keyProperty="id">
-    insert into product ( product_name, product_image, 
-      discount, box_price_flag, product_category_id, 
-      shop_id, school_id, sale, 
-      is_show)
-    values ( #{productName,jdbcType=VARCHAR}, #{productImage,jdbcType=VARCHAR}, 
-      #{discount,jdbcType=DECIMAL}, #{boxPriceFlag,jdbcType=INTEGER}, #{productCategoryId,jdbcType=INTEGER}, 
-      #{shopId,jdbcType=INTEGER}, #{schoolId,jdbcType=INTEGER}, #{sale,jdbcType=INTEGER}, 
-      #{isShow,jdbcType=INTEGER})
-  </insert>
+
     <update id="updateByPrimaryKeySelective" parameterType="ops.school.api.entity.Product">
         update product
         <set>

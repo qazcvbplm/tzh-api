@@ -75,10 +75,7 @@
     from wx_user
     where open_id = #{openId,jdbcType=VARCHAR}
   </select>
-    <insert id="insert" parameterType="ops.school.api.entity.WxUser">
-    insert into wx_user (open_id,client,app_id,school_id)
-    values (#{openId,jdbcType=VARCHAR}, #{client,jdbcType=VARCHAR},#{appId},#{schoolId})
-  </insert>
+
     <update id="updateByPrimaryKeySelective" parameterType="ops.school.api.entity.WxUser">
         update wx_user
         <set>

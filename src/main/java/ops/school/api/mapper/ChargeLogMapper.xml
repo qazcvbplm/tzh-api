@@ -23,12 +23,7 @@
         from charge_log
         where Id = #{id,jdbcType=INTEGER}
     </select>
-    <insert id="insert" parameterType="ops.school.api.entity.ChargeLog">
-    insert into charge_log (Id, pay, send, 
-      open_id, create_time,app_id)
-    values (#{id,jdbcType=VARCHAR}, #{pay,jdbcType=DECIMAL}, #{send,jdbcType=DECIMAL}, 
-      #{openId,jdbcType=VARCHAR}, now(),#{appId})
-  </insert>
+
 
     <select id="findByOpenId" resultMap="BaseResultMap" parameterType="string">
     select * from charge_log where open_id = #{openId} order by id desc

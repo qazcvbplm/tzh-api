@@ -42,14 +42,7 @@
     from floor
     where Id = #{id,jdbcType=INTEGER}
   </select>
-    <insert id="insert" parameterType="ops.school.api.entity.Floor">
-    insert into floor (name, school_id, 
-      sort, lat, lng,able_top
-      )
-    values ( #{name,jdbcType=VARCHAR}, #{schoolId,jdbcType=INTEGER}, 
-      #{sort,jdbcType=BIGINT}, #{lat,jdbcType=VARCHAR}, #{lng,jdbcType=VARCHAR},#{ableTop}
-      )
-  </insert>
+
     <update id="updateByPrimaryKeySelective" parameterType="ops.school.api.entity.Floor">
         update floor
         <set>
