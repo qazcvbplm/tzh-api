@@ -11,6 +11,13 @@ import java.util.List;
 
 @Service
 public class SlideServiceImpl extends ServiceImpl<SlideMapper, Slide> implements SlideService {
+
+    @Override
+    public boolean save(Slide entity) {
+        entity.setSort(System.currentTimeMillis());
+        return super.save(entity);
+    }
+
     @Override
     public List<Slide> findBySchoolId(Integer schoolId) {
         QueryWrapper<Slide> query = new QueryWrapper<Slide>();

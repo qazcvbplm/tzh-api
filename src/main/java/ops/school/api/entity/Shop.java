@@ -59,6 +59,13 @@ public class Shop extends Base {
     private Integer sendPriceAddByCountFlag;
     @NotNull
     private BigDecimal sendPriceAdd;
+    @NotNull
+    private BigDecimal fullMinusRate;
+    @NotNull
+    private BigDecimal couponRate;
+    @NotNull
+    private BigDecimal discountRate;
+
 
     private Integer isDelete;
 
@@ -67,6 +74,16 @@ public class Shop extends Base {
     private List<FullCut> fullCut;
 
     private BigDecimal minDiscount;
+
+    private Integer couponId;
+
+    public Integer getCouponId() {
+        return couponId;
+    }
+
+    public void setCouponId(Integer couponId) {
+        this.couponId = couponId;
+    }
 
     public Integer getTsModelFlag() {
         return tsModelFlag;
@@ -83,6 +100,31 @@ public class Shop extends Base {
 
     public Shop() {
         super();
+    }
+
+
+    public BigDecimal getFullMinusRate() {
+        return fullMinusRate;
+    }
+
+    public void setFullMinusRate(BigDecimal fullMinusRate) {
+        this.fullMinusRate = fullMinusRate;
+    }
+
+    public BigDecimal getCouponRate() {
+        return couponRate;
+    }
+
+    public void setCouponRate(BigDecimal couponRate) {
+        this.couponRate = couponRate;
+    }
+
+    public BigDecimal getDiscountRate() {
+        return discountRate;
+    }
+
+    public void setDiscountRate(BigDecimal discountRate) {
+        this.discountRate = discountRate;
     }
 
     public BigDecimal getMinDiscount() {

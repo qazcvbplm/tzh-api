@@ -22,6 +22,16 @@ public class Evaluate extends Base {
 
     private String createTime;
 
+    private Integer isDelete;
+
+    public Integer getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(Integer isDelete) {
+        this.isDelete = isDelete;
+    }
+
     public Integer getShopId() {
         return shopId;
     }

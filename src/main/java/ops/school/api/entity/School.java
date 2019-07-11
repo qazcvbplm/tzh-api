@@ -64,6 +64,55 @@ public class School extends Base implements Serializable {
 
     private BigDecimal userChargeSend;
 
+    private Integer pageLayout;
+
+    private BigDecimal smallMinAmount;
+
+    private BigDecimal middleMinAmount;
+
+    private BigDecimal largeMinAmount;
+
+    private BigDecimal extraLargeMinAmount;
+
+    public BigDecimal getSmallMinAmount() {
+        return smallMinAmount;
+    }
+
+    public void setSmallMinAmount(BigDecimal smallMinAmount) {
+        this.smallMinAmount = smallMinAmount;
+    }
+
+    public BigDecimal getMiddleMinAmount() {
+        return middleMinAmount;
+    }
+
+    public void setMiddleMinAmount(BigDecimal middleMinAmount) {
+        this.middleMinAmount = middleMinAmount;
+    }
+
+    public BigDecimal getLargeMinAmount() {
+        return largeMinAmount;
+    }
+
+    public void setLargeMinAmount(BigDecimal largeMinAmount) {
+        this.largeMinAmount = largeMinAmount;
+    }
+
+    public BigDecimal getExtraLargeMinAmount() {
+        return extraLargeMinAmount;
+    }
+
+    public void setExtraLargeMinAmount(BigDecimal extraLargeMinAmount) {
+        this.extraLargeMinAmount = extraLargeMinAmount;
+    }
+
+    public Integer getPageLayout() {
+        return pageLayout;
+    }
+
+    public void setPageLayout(Integer pageLayout) {
+        this.pageLayout = pageLayout;
+    }
 
     public BigDecimal getUserChargeSend() {
         return userChargeSend;
