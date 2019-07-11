@@ -13,4 +13,6 @@ public interface WxUserBellService extends IService<WxUserBell> {
     int pay(Map<String, Object> map);
 
     Integer addSource(Map<String, Object> map2);
+
+    int paySource(Map<String, Object> map);
 }

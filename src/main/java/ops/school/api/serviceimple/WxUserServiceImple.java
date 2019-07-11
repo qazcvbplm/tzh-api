@@ -73,18 +73,7 @@ public class WxUserServiceImple extends ServiceImpl<WxUserMapper, WxUser> implem
         return wxUserMapper.find(wxUser);
     }
 
-  /*  @Override
-    public Object charge(String openId, int chargeId) {
-        Charge charge = chargeMapper.selectByPrimaryKey(chargeId);
-        WxUser wxUser = wxUserMapper.selectByPrimaryKey(openId);
-        School school = schoolService.findById(wxUser.getSchoolId());
-        if (charge != null) {
-            return WXpayUtil.payrequest(school.getWxAppId(), school.getMchId(), school.getWxPayId(),
-                    "椰子-w", Util.GenerateOrderId(), charge.getFull() * 100 + "", openId,
-                    "127.0.0.1", chargeId + "", Server.URL + "notify/charge");
-        }
-        return null;
-    }*/
+
 
 
    /* @Transactional
@@ -133,10 +122,6 @@ public class WxUserServiceImple extends ServiceImpl<WxUserMapper, WxUser> implem
         }
     }
 
-   /* @Override
-    public Object findcharge(String openId) {
-        return chargeLogMapper.findByOpenId(openId);
-    }*/
 
 
     @Override
@@ -178,10 +163,5 @@ public class WxUserServiceImple extends ServiceImpl<WxUserMapper, WxUser> implem
         return wxUserMapper.findByschoolAndPhone(query);
     }
 
-  /*  @Override
-    public WxUserBell getbell(String openId) {
-        WxUser wxUser = findById(openId);
-        return wxUserBellMapper.selectByPrimaryKey(wxUser.getOpenId() + "-" + wxUser.getPhone());
-    }*/
 
 }

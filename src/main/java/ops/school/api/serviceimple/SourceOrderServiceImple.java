@@ -16,25 +16,6 @@ public class SourceOrderServiceImple extends ServiceImpl<SourceOrderMapper, Sour
     @Autowired
     private SourceOrderMapper sourceOrderMapper;
 
-   /* @Transactional
-    @Override
-    public String add(Integer id, @Valid SourceOrder sourceOrder) {
-        WxUser wxUser = wxUserService.findById(sourceOrder.getOpenId());
-        SourceProduct sp = sourceProductMapper.selectByPrimaryKey(id);
-        sourceOrder.setId(Util.GenerateOrderId());
-        sourceOrder.setPayPrice(sp.getPrice());
-        sourceOrder.setProductImage(sp.getProductImage());
-        sourceOrder.setProductName(sp.getProductName());
-        Map<String, Object> map = new java.util.HashMap<>();
-        map.put("phone", wxUser.getOpenId() + "-" + wxUser.getPhone());
-        map.put("source", sp.getPrice());
-        if (wxUserBellMapper.paySource(map) == 1) {
-            sourceOrderMapper.insert(sourceOrder);
-        } else {
-            throw new YWException("积分不足");
-        }
-        return sourceOrder.getId();
-    }*/
 
     @Override
     public List<SourceOrder> find(SourceOrder sourceOrder) {

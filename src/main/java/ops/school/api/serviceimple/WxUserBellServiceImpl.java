@@ -29,4 +29,9 @@ public class WxUserBellServiceImpl extends ServiceImpl<WxUserBellMapper, WxUserB
     public Integer addSource(Map<String, Object> map2) {
         return wxUserBellMapper.addSource(map2);
     }
+
+    @Override
+    public int paySource(Map<String, Object> map) {
+        return wxUserBellMapper.paySource(map);
+    }
 }
