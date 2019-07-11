@@ -23,5 +23,5 @@ public interface SenderService extends IService<Sender> {
 
     int finddsh(int schoolId);
 
-
+    Sender check(String senderId);
 }

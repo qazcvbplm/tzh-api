@@ -2,16 +2,18 @@ package ops.school.api.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import ops.school.api.entity.Orders;
+import ops.school.api.entity.Sender;
 
 import java.util.List;
+import java.util.Map;
 
 public interface OrdersService extends IService<Orders> {
 
-    int pl(String id);
+    Integer pl(String id);
 
     List<Orders> find(Orders orders);
 
-    int count(Orders orders);
+    Integer count(Orders orders);
 
     Orders findById(String orderId);
 
@@ -20,7 +22,7 @@ public interface OrdersService extends IService<Orders> {
 
     void remove();
 
-    int countBySchoolId(int schoolId);
+    Integer countBySchoolId(int schoolId);
 
     public List<Orders> findByShopByDjs(int shopId);
 
@@ -28,5 +30,21 @@ public interface OrdersService extends IService<Orders> {
 
     List<Orders> findAllDjs();
 
+    Integer paySuccess(Map<String, Object> map);
 
+    Integer cancel(String id);
+
+    Integer waterNumber(Orders update);
+
+    Integer shopAcceptOrderById(Orders update);
+
+    List<Orders> findBySenderTakeout(Sender sender);
+
+    Integer senderAccept(Orders orders);
+
+    Integer getorder(String orderId);
+
+    Integer end(Orders orders);
+
+    List<Orders> senderStatistics(Map<String, Object> map);
 }
