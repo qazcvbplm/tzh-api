@@ -190,7 +190,7 @@
 
 
     <update id="shopAcceptOrderById" parameterType="ops.school.api.entity.Orders">
-  update orders set status='商家已接手',water_number=#{waterNumber} where id=#{id} and status='待接手'
+  update orders set status='商家已接手',water_number=#{waterNumber},shop_accept_time = date_format(now(), '%Y-%c-%d %h:%i:%s') where id=#{id} and status='待接手'
  </update>
 
     <select id="waterNumber" resultType="int" parameterType="ops.school.api.entity.Orders">

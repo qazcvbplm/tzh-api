@@ -20,6 +20,15 @@ public class WxUserBell {
 
     private Long vipOutTime;
 
+    private BigDecimal foodCoupon;
+
+    public BigDecimal getFoodCoupon() {
+        return foodCoupon;
+    }
+
+    public void setFoodCoupon(BigDecimal foodCoupon) {
+        this.foodCoupon = foodCoupon;
+    }
 
     public WxUserBell() {
         super();

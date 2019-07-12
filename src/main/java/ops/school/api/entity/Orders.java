@@ -96,6 +96,16 @@ public class Orders extends Base {
 
     private OrdersComplete complete;
 
+    private String shopAcceptTime;
+
+
+    public String getShopAcceptTime() {
+        return shopAcceptTime;
+    }
+
+    public void setShopAcceptTime(String shopAcceptTime) {
+        this.shopAcceptTime = shopAcceptTime;
+    }
 
     public OrdersComplete getComplete() {
         return complete;
