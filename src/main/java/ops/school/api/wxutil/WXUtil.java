@@ -3,13 +3,13 @@ package ops.school.api.wxutil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.thoughtworks.xstream.core.util.Base64Encoder;
+import ops.school.api.dto.min.MinMessageDTO;
 import ops.school.api.exception.YWException;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Map;
 
 
 public class WXUtil {
@@ -131,25 +131,13 @@ public class WXUtil {
      * form_id  表单id  或者支付id
      * keyword 关键字 1,2,3,4,5,6,7.。。。
      */
-    public static void snedM(Map<String, String> map) {
+    public static void snedM(MinMessageDTO minMessageDTO) {
         //发送模板消息
-        String access_token = getAccessToken(map.get("appid"), map.get("secert"));
-        JSONObject output = new JSONObject();
-        output.put("touser", map.get("touser"));
-        output.put("template_id", map.get("template_id"));
-        output.put("form_id", map.get("form_id"));
-        JSONObject data = new JSONObject();
-        JSONObject keyword;
-        int count = Integer.valueOf(map.get("keywordcount"));
-        for (int i = 1; i < count; i++) {
-            keyword = new JSONObject();
-            keyword.put("value", map.get("keyword" + i));
-            keyword.put("color", "#173177");
-            data.put("keyword" + i, keyword);
-        }
-        output.put("data", data);
-        String rs = PayUtil.httpRequest(msurl + access_token, "POST", output.toString());
+        String access_token = getAccessToken(minMessageDTO.getAppId(), minMessageDTO.getSecret());
+        String rs = PayUtil.httpRequest(msurl + access_token,
+                "POST", JSON.toJSONString(minMessageDTO));
     }
+
 
 /*	public static boolean checkFK(String appid,String mch_id,String key,String out_trade_no) {
 		  boolean rs=false;
