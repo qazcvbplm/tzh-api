@@ -133,4 +133,14 @@ public class OrdersServiceImple extends ServiceImpl<OrdersMapper, Orders> implem
     public List<Orders> shopsta(Map<String, Object> map) {
         return ordersMapper.shopsta(map);
     }
+
+    @Override
+    public Orders completeByShopId(Map<String, Object> map) {
+        return ordersMapper.completeByShopId(map);
+    }
+
+    @Override
+    public List<Orders> completeBySchoolId(Map<String, Object> map) {
+        return ordersMapper.completeBySchoolId(map);
+    }
 }

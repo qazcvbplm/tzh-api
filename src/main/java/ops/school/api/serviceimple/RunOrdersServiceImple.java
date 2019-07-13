@@ -2,6 +2,7 @@ package ops.school.api.serviceimple;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import ops.school.api.dao.RunOrdersMapper;
+import ops.school.api.dto.RunOrdersTj;
 import ops.school.api.entity.RunOrders;
 import ops.school.api.entity.Sender;
 import ops.school.api.service.RunOrdersService;
@@ -98,6 +99,11 @@ public class RunOrdersServiceImple extends ServiceImpl<RunOrdersMapper, RunOrder
     @Override
     public List<RunOrders> senderStatistics(Map<String, Object> map) {
         return runOrdersMapper.senderStatistics(map);
+    }
+
+    @Override
+    public List<RunOrdersTj> tj(Integer schoolId, String day) {
+        return runOrdersMapper.tj(schoolId, day);
     }
 
 }

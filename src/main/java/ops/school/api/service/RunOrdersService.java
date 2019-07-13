@@ -1,6 +1,7 @@
 package ops.school.api.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import ops.school.api.dto.RunOrdersTj;
 import ops.school.api.entity.RunOrders;
 import ops.school.api.entity.Sender;
 
@@ -35,4 +36,6 @@ public interface RunOrdersService extends IService<RunOrders> {
     Integer end(String orderId);
 
     List<RunOrders> senderStatistics(Map<String, Object> map);
+
+    List<RunOrdersTj> tj(Integer schoolId, String day);
 }

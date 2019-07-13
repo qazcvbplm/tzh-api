@@ -49,4 +49,8 @@ public interface OrdersService extends IService<Orders> {
     List<Orders> senderStatistics(Map<String, Object> map);
 
     List<Orders> shopsta(Map<String, Object> map);
+
+    Orders completeByShopId(Map<String, Object> map);
+
+    List<Orders> completeBySchoolId(Map<String, Object> map);
 }
