@@ -7,6 +7,7 @@ import ops.school.api.service.WxUserBellService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.Map;
 
 @Service
@@ -33,5 +34,21 @@ public class WxUserBellServiceImpl extends ServiceImpl<WxUserBellMapper, WxUserB
     @Override
     public int paySource(Map<String, Object> map) {
         return wxUserBellMapper.paySource(map);
+    }
+
+    @Override
+    public Boolean addFoodCoupon(String id, BigDecimal amount) {
+        if (wxUserBellMapper.addFoodCoupon(id, amount) == 1) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public Boolean useFoodCoupon(String id, BigDecimal amount) {
+        if (wxUserBellMapper.useFoodCoupon(id, amount) == 1) {
+            return true;
+        }
+        return false;
     }
 }
