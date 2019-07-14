@@ -98,6 +98,15 @@ public class Orders extends Base {
 
     private String shopAcceptTime;
 
+    private BigDecimal payFoodCoupon;
+
+    public BigDecimal getPayFoodCoupon() {
+        return payFoodCoupon;
+    }
+
+    public void setPayFoodCoupon(BigDecimal payFoodCoupon) {
+        this.payFoodCoupon = payFoodCoupon;
+    }
 
     public String getShopAcceptTime() {
         return shopAcceptTime;
