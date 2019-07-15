@@ -66,6 +66,13 @@ public class Shop extends Base {
     @NotNull
     private BigDecimal discountRate;
 
+    private BigDecimal shopOpenId;
+
+    private BigDecimal txAmount;
+
+    private BigDecimal allTxAmount;
+
+
 
     private Integer isDelete;
 
@@ -76,6 +83,30 @@ public class Shop extends Base {
     private BigDecimal minDiscount;
 
     private Integer couponId;
+
+    public BigDecimal getTxAmount() {
+        return txAmount;
+    }
+
+    public void setTxAmount(BigDecimal txAmount) {
+        this.txAmount = txAmount;
+    }
+
+    public BigDecimal getAllTxAmount() {
+        return allTxAmount;
+    }
+
+    public void setAllTxAmount(BigDecimal allTxAmount) {
+        this.allTxAmount = allTxAmount;
+    }
+
+    public BigDecimal getShopOpenId() {
+        return shopOpenId;
+    }
+
+    public void setShopOpenId(BigDecimal shopOpenId) {
+        this.shopOpenId = shopOpenId;
+    }
 
     public Integer getCouponId() {
         return couponId;

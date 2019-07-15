@@ -26,6 +26,16 @@ public class TxLog {
 
     private Integer ishow;
 
+    private Integer isTx;
+
+    public Integer getIsTx() {
+        return isTx;
+    }
+
+    public void setIsTx(Integer isTx) {
+        this.isTx = isTx;
+    }
+
     public Integer getIshow() {
         return ishow;
     }
