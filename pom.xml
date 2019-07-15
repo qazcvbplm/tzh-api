@@ -10,6 +10,7 @@
 
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa -->
         <dependency>
             <groupId>ops.school</groupId>
             <artifactId>base</artifactId>
