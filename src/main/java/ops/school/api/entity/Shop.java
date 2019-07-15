@@ -66,7 +66,7 @@ public class Shop extends Base {
     @NotNull
     private BigDecimal discountRate;
 
-    private BigDecimal shopOpenId;
+    private Integer shopTxFlage;
 
     private BigDecimal txAmount;
 
@@ -100,12 +100,12 @@ public class Shop extends Base {
         this.allTxAmount = allTxAmount;
     }
 
-    public BigDecimal getShopOpenId() {
-        return shopOpenId;
+    public Integer getShopTxFlage() {
+        return shopTxFlage;
     }
 
-    public void setShopOpenId(BigDecimal shopOpenId) {
-        this.shopOpenId = shopOpenId;
+    public void setShopTxFlage(Integer shopTxFlage) {
+        this.shopTxFlage = shopTxFlage;
     }
 
     public Integer getCouponId() {
