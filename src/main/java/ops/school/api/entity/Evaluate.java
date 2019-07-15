@@ -24,6 +24,26 @@ public class Evaluate extends Base {
 
     private Integer isDelete;
 
+    private String replyTime;
+
+    private String replyContent;
+
+    public String getReplyTime() {
+        return replyTime;
+    }
+
+    public void setReplyTime(String replyTime) {
+        this.replyTime = replyTime;
+    }
+
+    public String getReplyContent() {
+        return replyContent;
+    }
+
+    public void setReplyContent(String replyContent) {
+        this.replyContent = replyContent;
+    }
+
     public Integer getIsDelete() {
         return isDelete;
     }
