@@ -283,7 +283,7 @@
   </update>
 
     <update id="cancel" parameterType="string">
-    update orders set status='已取消' where status ='待接手' and id=#{id}
+    update orders set status='已取消' where status !='已取消' and id=#{id}
   </update>
 
 </mapper>
