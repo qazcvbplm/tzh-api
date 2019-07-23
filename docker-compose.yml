@@ -1,0 +1,69 @@
+version: "2"
+services:
+  nginx:
+    restart: "always"
+    image: nginx
+    ports:
+      - "80:80"
+    networks:
+      - "net1"
+    volumes:
+      - ./conf/nginx.conf:/etc/nginx/nginx.conf
+      - ./conf/1.crt:/etc/nginx/1.crt
+      - ./conf/2.key:/etc/nginx/2.key
+  web:
+    restart: "always"
+    image: openjdk
+    depends_on:
+      - mysql
+      - redis
+      - rabbitmq
+    ports:
+      - "11000:11000"
+    networks:
+      - "net1"
+    volumes:
+      - ./conf/com.jar:/com.jar
+    command: nohup java -jar  com.jar
+  mysql:
+    restart: "always"
+    image: mysql
+    network_mode: "host"
+    command:
+      --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "TZH1234567890"
+      MYSQL_USER: "test"
+      MYSQL_PASS: "chuyinkeji"
+    volumes:
+      - "./mysql_data:/var/lib/mysql"
+      - "./conf/init.sql:/docker-entrypoint-initdb.d/"
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - "./redis_data:/data"
+    command: redis-server --requirepass tzh1234567890
+  rabbitmq:
+    image: rabbitmq:management-alpine
+    environment:
+      - RABBITMQ_DEFAULT_USER=root
+      - RABBITMQ_DEFAULT_PASS=tzh1234567890
+    restart: always
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
+    volumes:
+      - "./rabbitmq_data:/var/lib/rabbitmq"
+
+networks:
+  net1:
+    driver: bridge
