@@ -3,59 +3,64 @@ services:
   nginx:
     restart: "always"
     image: nginx
-    ports:
-      - "80:80"
-      - "443:443"
-    network_mode: "host"
     volumes:
       - ./conf/nginx.conf:/etc/nginx/nginx.conf
       - ./conf/1.crt:/etc/nginx/1.crt
       - ./conf/2.key:/etc/nginx/2.key
       - ./conf/yzxy:/etc/nginx/yzxy
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      extnetwork:
+        ipv4_address: 192.168.0.2
   web:
     image: openjdk
     depends_on:
       - mysql
       - redis
       - rabbitmq
-    ports:
-      - "11000:11000"
-    network_mode: "host"
     volumes:
       - ./conf/com.jar:/com.jar
+      - ./conf/cert:/cert
     command: nohup java -jar  com.jar
+    ports:
+      - "11000:11000"
+    networks:
+      extnetwork:
+        ipv4_address: 192.168.0.3
   mysql:
     restart: "always"
     image: mysql
-    network_mode: "host"
     command:
       --default-authentication-plugin=mysql_native_password
-    ports:
-      - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: "TZH1234567890"
       MYSQL_USER: "test"
       MYSQL_PASS: "chuyinkeji"
     volumes:
       - "./mysql_data:/var/lib/mysql"
+    ports:
+      - "3306:3306"
+    networks:
+      extnetwork:
+        ipv4_address: 192.168.0.4
   redis:
     image: redis
-    network_mode: "host"
-    ports:
-      - "6379:6379"
     volumes:
       - "./redis_data:/data"
     command: redis-server --requirepass tzh1234567890
+    ports:
+      - "6379:6379"
+    networks:
+      extnetwork:
+        ipv4_address: 192.168.0.5
   rabbitmq:
     image: rabbitmq:management-alpine
     environment:
       - RABBITMQ_DEFAULT_USER=root
       - RABBITMQ_DEFAULT_PASS=tzh1234567890
     restart: always
-    network_mode: "host"
-    ports:
-      - "15672:15672"
-      - "5672:5672"
     logging:
       driver: "json-file"
       options:
@@ -63,7 +68,17 @@ services:
         max-file: "10"
     volumes:
       - "./rabbitmq_data:/var/lib/rabbitmq"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      extnetwork:
+        ipv4_address: 192.168.0.6
 
 networks:
-  net1:
+  extnetwork:
     driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.0.0/16
+          gateway: 192.168.0.1
