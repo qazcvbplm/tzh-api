@@ -23,6 +23,8 @@ services:
     volumes:
       - ./conf/com.jar:/com.jar
       - ./conf/cert:/cert
+      - ./conf/config:/config
+      - ./logs:/logs
     command: nohup java -jar  com.jar
     ports:
       - "11000:11000"
