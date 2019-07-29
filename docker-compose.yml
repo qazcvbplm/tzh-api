@@ -7,7 +7,8 @@ services:
       - ./conf/nginx.conf:/etc/nginx/nginx.conf
       - ./conf/1.crt:/etc/nginx/1.crt
       - ./conf/2.key:/etc/nginx/2.key
-      - ./conf/yzxy:/etc/nginx/yzxy
+      - /home/yzxy:/etc/nginx/yzxy
+      - ./shopbarcode:/etc/nginx/shopbarcode
     ports:
       - "80:80"
       - "443:443"
@@ -21,10 +22,11 @@ services:
       - redis
       - rabbitmq
     volumes:
-      - ./conf/com.jar:/com.jar
-      - ./conf/cert:/cert
+      - /home/com-c2.jar:/com.jar
+      - ./cert:/cert
       - ./conf/config:/config
       - ./logs:/logs
+      - ./shopbarcode:/home/barcode
     command: nohup java -jar  com.jar
     ports:
       - "11000:11000"
